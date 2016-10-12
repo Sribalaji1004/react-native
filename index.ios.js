@@ -1,60 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+'use strict'
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  Image
-} from 'react-native';
+var React = require('react');
+var ReactNative = require('react-native');
+var SearchPage = require('./SearchPage');
 
-class image extends Component {
+
+class Image extends React.Component {
   render() {
     return (
-       <Image
-        source={require('./image/audi1.jpg')}
-        style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Audi
-        </Text>
-        <Text style={styles.instructions}>
-          Enter the world of brand Audi.
-        </Text>
-        <Text style={styles.instructions}>
-          Get up close with Audi innovation, performance and precision.{'\n'}
-        </Text>
-      </Image>
+      <ReactNative.NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'Movies',
+          component: SearchPage,
+        }}/>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: null,
-    height: null,
-    justifyContent: 'center',
-    alignItems: 'center',
-   backgroundColor:'transparent',
-    resizeMode:'stretch'
-  },
-  welcome: {
-    flex:1,
-    padding:40,
-    fontSize: 20,
-    textAlign: 'right',
-    margin: 10,
-    color:'tomato'
-  },
-  instructions: {
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 5,
-  },
+var styles = ReactNative.StyleSheet.create(
+{
+text: {
+color:'violet',
+backgroundColor:'white',
+fontSize:40,
+margin:80
+},
+container: {flex:1,
+}
 });
-
-AppRegistry.registerComponent('image', () => image);
+ReactNative.AppRegistry.registerComponent('image', function() { return Image });
